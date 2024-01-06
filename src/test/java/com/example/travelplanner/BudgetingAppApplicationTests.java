@@ -1,4 +1,4 @@
-package com.example.budgetingapp;
+package com.example.travelplanner;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
