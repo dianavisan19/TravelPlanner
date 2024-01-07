@@ -1,18 +1,16 @@
-package com.example.travelplanner.entity;
+package com.example.travelplanner.DTO;
 
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "activities")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class Activity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ActivityDTO {
     private Long activityId;
-
     private String name;
     private String date;
     private String time;
