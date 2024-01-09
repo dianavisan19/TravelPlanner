@@ -1,5 +1,6 @@
 package com.example.travelplanner.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,11 @@ public class Destination {
     private Long destinationId;
 
     private String name;
-    private String description;
     private String country;
+
+    private String destination;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Trip trip;
 }

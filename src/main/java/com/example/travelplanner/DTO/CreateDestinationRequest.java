@@ -9,10 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class DestinationDTO {
-    private Long destinationId;
-    private String name;
-    private String description;
-    private String country;
-
+public class CreateDestinationRequest {
+    public Long tripId;
+    public String name;
+    public String country;
 }

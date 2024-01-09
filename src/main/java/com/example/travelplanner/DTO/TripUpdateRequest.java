@@ -1,12 +1,21 @@
 package com.example.travelplanner.DTO;
 
-import java.util.List;
+import com.example.travelplanner.entity.Destination;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class TripUpdateRequest {
     private String name;
     private String startDate;
     private String endDate;
-    private List<ActivityDTO> activities; // Assume ActivityDTO is a class you define
-    private List<ExpenseDTO> expenses;    // Assume ExpenseDTO is a class you define
-    private DestinationDTO destination;
+//    private List<CreateActivityRequest> activities;
+//    private List<CreateExpenseRequest> expenses;
+    private Long destinationId;
 }

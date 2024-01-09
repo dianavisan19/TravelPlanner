@@ -9,10 +9,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ActivityDTO {
-    private Long activityId;
+public class CreateTripRequest {
+    private Long userId;
     private String name;
-    private String date;
-    private String time;
-    private String location;
+    private String startDate;
+    private String endDate;
 }

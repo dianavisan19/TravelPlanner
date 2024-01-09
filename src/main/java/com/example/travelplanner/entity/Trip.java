@@ -26,14 +26,14 @@ public class Trip {
     private Long tripId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id") // Name of the foreign key column in the trips table
+    @JoinColumn(name = "user_id") //foreign key in the trips table
     private User user;
 
     @NotBlank(message = "Name cannot be blank")
     private String name;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private String startDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private String endDate;
 
     //actiti will get saved along with trip
@@ -45,7 +45,7 @@ public class Trip {
     @JoinColumn(name = "trip_id")
     private List<Expense> expenses;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "destination_id")
     private Destination destination;
 }

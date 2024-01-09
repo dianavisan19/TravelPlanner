@@ -11,14 +11,14 @@ import static jakarta.persistence.InheritanceType.SINGLE_TABLE;
 @Table(name = "expenses")
 @Getter
 @Setter
-@Inheritance(strategy=SINGLE_TABLE)
-@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING,
-        name = "Expense_Type")
 public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long expenseId;
 
     private String name;
-    private double amount;
+    private Double amount;
+
+    @Enumerated(EnumType.STRING)
+    private ExpenseType type;
 }

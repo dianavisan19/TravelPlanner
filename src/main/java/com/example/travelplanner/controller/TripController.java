@@ -1,6 +1,6 @@
 package com.example.travelplanner.controller;
 
-import com.example.travelplanner.DTO.TripCreateRequest;
+import com.example.travelplanner.DTO.*;
 import com.example.travelplanner.entity.Trip;
 import com.example.travelplanner.service.TripService;
 import com.example.travelplanner.service.UserService;
@@ -29,24 +29,35 @@ public class TripController {
         return tripService.getById(id);
     }
 
-    @PostMapping("/create/{userId}")
-    public Trip createTrip(@PathVariable Long userId, @RequestBody Trip trip) {
-        return tripService.createTrip(userId, trip);
+    @PostMapping("/create")
+    public Trip createTrip(@RequestBody CreateTripRequest createTripRequest) {
+        return tripService.createTrip(createTripRequest);
+    }
+    @PostMapping("/addActivity")
+    public Trip addActivityToTrip(@RequestBody CreateActivityRequest createActivityRequest) {
+        return tripService.addActivityToTrip(createActivityRequest);
+    }
+
+    @PostMapping("/addExpense")
+    public Trip addActivityToTrip(@RequestBody CreateExpenseRequest createExpenseRequest) {
+        return tripService.addExpenseToTrip(createExpenseRequest);
+    }
+    @PostMapping("/addDestination")
+    public Trip addDestinationToTrip(@RequestBody CreateDestinationRequest createDestinationRequest){
+        return tripService.addDestination(createDestinationRequest);
     }
 
     @GetMapping("/user/{userId}")
-    public List<TripCreateRequest> getUserTrips(@PathVariable Long userId) {
-        List<TripCreateRequest> userTrips = tripService.getTripsByUserId(userId);
-        return userTrips;
+    public List<Trip> getUserTrips(@PathVariable Long userId) {
+       return tripService.getTripsByUserId(userId);
     }
     @PutMapping("/{tripId}")
-    public Trip updateTrip(@PathVariable Long tripId, @RequestBody Trip trip) {
-        return tripService.updateTrip(tripId, trip);
+    public Trip updateTrip(@PathVariable Long tripId, @RequestBody TripUpdateRequest tripUpdateRequest) {
+        return tripService.updateTrip(tripId, tripUpdateRequest);
     }
     @DeleteMapping("/{tripId}")
     public ResponseEntity<?> deleteTrip(@PathVariable Long tripId) {
         tripService.deleteTrip(tripId);
         return ResponseEntity.ok().build();
     }
-
 }
