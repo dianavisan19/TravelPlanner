@@ -13,14 +13,11 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
     @PostMapping
     public ResponseEntity<User> save(@RequestBody User user){
         System.out.println("User save called...");
         userService.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
-
-
 
 }

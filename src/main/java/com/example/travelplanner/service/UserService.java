@@ -2,6 +2,7 @@ package com.example.travelplanner.service;
 
 import com.example.travelplanner.entity.Trip;
 import com.example.travelplanner.entity.User;
+import com.example.travelplanner.exceptions.UserNotFoundException;
 import com.example.travelplanner.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

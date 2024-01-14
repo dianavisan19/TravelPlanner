@@ -15,7 +15,5 @@ public class TripUpdateRequest {
     private String name;
     private String startDate;
     private String endDate;
-//    private List<CreateActivityRequest> activities;
-//    private List<CreateExpenseRequest> expenses;
     private Long destinationId;
 }

@@ -4,6 +4,7 @@ import com.example.travelplanner.validators.StartDateBeforeEndDate;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@StartDateBeforeEndDate
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +36,6 @@ public class Trip {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private String endDate;
 
-    //actiti will get saved along with trip
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "trip_id")
     private List<Activity> activities;

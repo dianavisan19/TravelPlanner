@@ -1,4 +1,4 @@
-package com.example.travelplanner.service;
+package com.example.travelplanner.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {
@@ -7,5 +7,4 @@ public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
-
 }

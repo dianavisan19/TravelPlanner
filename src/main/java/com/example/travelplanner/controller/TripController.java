@@ -33,19 +33,7 @@ public class TripController {
     public Trip createTrip(@RequestBody CreateTripRequest createTripRequest) {
         return tripService.createTrip(createTripRequest);
     }
-    @PostMapping("/addActivity")
-    public Trip addActivityToTrip(@RequestBody CreateActivityRequest createActivityRequest) {
-        return tripService.addActivityToTrip(createActivityRequest);
-    }
 
-    @PostMapping("/addExpense")
-    public Trip addActivityToTrip(@RequestBody CreateExpenseRequest createExpenseRequest) {
-        return tripService.addExpenseToTrip(createExpenseRequest);
-    }
-    @PostMapping("/addDestination")
-    public Trip addDestinationToTrip(@RequestBody CreateDestinationRequest createDestinationRequest){
-        return tripService.addDestination(createDestinationRequest);
-    }
 
     @GetMapping("/user/{userId}")
     public List<Trip> getUserTrips(@PathVariable Long userId) {

@@ -7,18 +7,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.UpperCase;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class CreateDestinationRequest {
+public class ActivityRequestDTO {
     @NotNull(message = "Trip ID cannot be null")
     private Long tripId;
     @NotBlank(message = "Name cannot be blank")
-    @UpperCase
     private String name;
-    @NotBlank(message = "Country cannot be blank")
+    private String date;
+    private String time;
     @UpperCase
-    private String country;
+    private String location;
 }

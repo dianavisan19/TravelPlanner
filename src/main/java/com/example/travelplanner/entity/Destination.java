@@ -17,8 +17,6 @@ public class Destination {
     private String name;
     private String country;
 
-    private String destination;
-
     @JsonIgnore
     @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL, orphanRemoval = true)
     private Trip trip;
