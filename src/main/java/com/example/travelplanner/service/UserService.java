@@ -4,6 +4,7 @@ import com.example.travelplanner.entity.Trip;
 import com.example.travelplanner.entity.User;
 import com.example.travelplanner.exceptions.UserNotFoundException;
 import com.example.travelplanner.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +33,12 @@ public class UserService {
     public User getUserById(Long userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
+    }
+
+    public void delete(Long tripId) {
+        if (!userRepository.existsById(tripId)) {
+            throw new EntityNotFoundException("user not found: " + tripId);
+        }
+        userRepository.deleteById(tripId);
     }
 }
