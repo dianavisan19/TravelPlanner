@@ -1,7 +1,9 @@
 package com.example.travelplanner.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -9,6 +11,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "activities")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

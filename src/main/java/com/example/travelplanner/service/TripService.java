@@ -76,19 +76,20 @@ public class TripService {
     }
 
 
-
-
     public Trip addDestination(CreateDestinationRequest createDestinationRequest){
         Long tripId = createDestinationRequest.getTripId();
         Trip trip = tripRepository.findById(tripId)
                 .orElseThrow(() -> new EntityNotFoundException("Trip not found: " + tripId));
+
+        if(trip.getDestination() != null && trip.getDestination().getName().equals(createDestinationRequest.getName())){
+            throw new EntityExistsException("Destination already exists in the trip.");
+        }
+
         Destination destination = new Destination();
         destination.setTrip(trip);
         destination.setName(createDestinationRequest.getName());
         destination.setCountry(createDestinationRequest.getCountry());
-        if(trip.getDestination().equals(createDestinationRequest.getName())){
-            throw new EntityExistsException("Destinaion already exists in the trip.");
-        }
+
         trip.setDestination(destination);
         return tripRepository.save(trip);
     }

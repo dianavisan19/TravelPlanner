@@ -34,7 +34,6 @@ public class TripController {
         return tripService.createTrip(createTripRequest);
     }
 
-
     @GetMapping("/user/{userId}")
     public List<Trip> getUserTrips(@PathVariable Long userId) {
        return tripService.getTripsByUserId(userId);

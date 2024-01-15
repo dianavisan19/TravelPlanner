@@ -20,7 +20,9 @@ public class ActivityRequestDTO {
     private Long tripId;
     @NotBlank(message = "Name cannot be blank")
     private String name;
+    @NotBlank
     private String date;
+    @NotBlank
     private String time;
     @UpperCase
     private String location;

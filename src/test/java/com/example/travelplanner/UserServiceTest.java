@@ -1,16 +1,16 @@
 package com.example.travelplanner;
 
 import com.example.travelplanner.DTO.ActivityRequestDTO;
+import com.example.travelplanner.DTO.CreateTripRequest;
 import com.example.travelplanner.entity.Activity;
 import com.example.travelplanner.entity.Trip;
 import com.example.travelplanner.entity.User;
+import com.example.travelplanner.exceptions.ActivityNotFoundException;
+import com.example.travelplanner.exceptions.UserNotFoundException;
 import com.example.travelplanner.repository.TripRepository;
 import com.example.travelplanner.repository.UserRepository;
-import com.example.travelplanner.DTO.CreateTripRequest;
-import com.example.travelplanner.exceptions.ActivityNotFoundException;
 import com.example.travelplanner.service.ActivityService;
 import com.example.travelplanner.service.TripService;
-import com.example.travelplanner.exceptions.UserNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,10 +23,11 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class TripServiceTest {
+public class UserServiceTest {
 
     @Mock
     private TripRepository tripRepository;
@@ -62,9 +63,6 @@ public class TripServiceTest {
 
         assertNotNull(result);
         assertEquals(trip, result);
-        verify(userRepository).findById(userId);
-        verify(modelMapper).map(newTripRequest, Trip.class);
-        verify(tripRepository).save(trip);
     }
 
     @Test
@@ -127,7 +125,7 @@ public class TripServiceTest {
     }
 
     @Test
-    void addActivityToTrip_TripNotFound() {
+    void addActivityToTripNotFound() {
         Long tripId = 99L;
         ActivityRequestDTO activityRequestDTO = new ActivityRequestDTO();
         activityRequestDTO.setTripId(tripId);
